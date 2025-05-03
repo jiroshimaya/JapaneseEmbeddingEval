@@ -4,7 +4,14 @@
 もちろんnが無駄に大きいと計算コストがかさむだけなので、利用を想定する検索システムにおけるコスパの良いnを把握しておくことは重要です。
 
 そこで、代表的な埋め込みにおけるnとrecall@nの関係を算出し公開することにしました。
+現在はOpenAIのtext-embedding-3系列のみ評価しています。
 
+## Recallスコア
+
+| Model                   | @1    | @3    | @10   | @30   | @100  | @300  | @1000 |
+|-------------------------|-------|-------|-------|-------|-------|-------|-------|
+| text-embedding-3-large  | 0.231 | 0.441 | 0.667 | 0.831 | 0.923 | 0.979 | 1.000 |
+| text-embedding-3-small  | 0.231 | 0.379 | 0.574 | 0.779 | 0.882 | 0.969 | 1.000 |
 
 
 
@@ -44,8 +51,8 @@
 | pkshatech/GLuCoSE-base-ja                       | 768     | 133M      |             0.818 |        0.757 |        0.692 |     0.755 |
 | pkshatech/simcse-ja-bert-base-clcmlp            | 768     | 111M      |             0.801 |        0.735 |        0.544 |     0.693 |
 | **API**|
-| text-embedding-3-large                          | 3072    |           |             0.838 |        0.812 |        0.841[^1] |     0.830 |
-| text-embedding-3-small                          | 1536    |           |             0.781 |        0.804 |        0.795[^1] |     0.793 |
+| text-embedding-3-large                          | 3072    |           |             0.838 |        0.812 |        0.831[^1] |     0.830 |
+| text-embedding-3-small                          | 1536    |           |             0.781 |        0.804 |        0.779[^1] |     0.793 |
 | text-embedding-ada-002                          | 1536    |           |             0.790 |        0.790 |        0.728[^1] |     0.769 |
 | textembedding-gecko-multilingual@001            | 768     |           |             0.801 |        0.804 |        0.800[^1] |     0.801 |
 | **LLM**|
@@ -88,3 +95,4 @@
         * Scores for models other than intfloat/multilingual-e5-base are calculated higher only in the following case, but we believe that they are almost unaffected.
             * A negative that is ranked lower than the top 300 by intfloat/multilingual-e5-base is ranked within the top 30 by that model, which pushes the positive into the top 30 or lower.
     * Some queries contain more than 30 potential positive documents in the miracl-corpus. In this case, even a very good model may not be able to rank the ground truth positive documents within the top 30. We estimated such queries to be about 7% to 10% of the total 860 queries. This number was estimated by referring to the tydiqa data for the same query as the corresponding miracl dev query and counting whether the tydiqa answer phrase was in at least 30 of the 300 hard negatives documents.
+
