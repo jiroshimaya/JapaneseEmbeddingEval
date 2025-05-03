@@ -1,0 +1,15 @@
+[project]
+name = "japaneseembeddingeval"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.5.1",
+    "ipykernel>=6.29.5",
+    "langchain-openai>=0.3.15",
+    "openai>=1.76.2",
+    "python-dotenv>=1.1.0",
+    "scipy>=1.15.2",
+    "tqdm>=4.67.1",
+]

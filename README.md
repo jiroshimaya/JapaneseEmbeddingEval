@@ -1,3 +1,15 @@
+# このフォークリポジトリについて
+このフォークリポジトリではMIRACLのrecall@n（n=1,3,10,30,100,300,1000）を計算した結果を記載しています。
+検索結果を人間に見せる場合にはnが小さいときに高い精度となることが望ましいですが、LLMやリランクモデルに入力する場合にはnが多少大きくても問題ないことがあります。
+もちろんnが無駄に大きいと計算コストがかさむだけなので、利用を想定する検索システムにおけるコスパの良いnを把握しておくことは重要です。
+
+そこで、代表的な埋め込みにおけるnとrecall@nの関係を算出し公開することにしました。
+
+
+
+
+
+# 以下、フォーク元のREAMDE.md
 ⚠️ **重要** 2024/10/8 より多様なタスクにより埋め込みモデルを評価したリーダーボード[JMTEB](https://github.com/sbintuitions/JMTEB)が公開されておりますので、こちらを参照することをお勧めします。  
 ⚠️ **IMPORTANT UPDATE**: we recommend checking out [JMTEB](https://github.com/sbintuitions/JMTEB), a new leaderboard that evaluates embedding models using a more diverse set of tasks.
 
